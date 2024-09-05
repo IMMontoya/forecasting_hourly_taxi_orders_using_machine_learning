@@ -1,5 +1,16 @@
 # Forecasting Hourly Taxi Orders Using Machine Learning
 
+## Table of Contents
+
+- [Notebook](/forecasting_hourly_taxi_orders.ipynb)
+- [Introduction](#introduction)
+- [Dataset Description](#dataset-description)
+- [Data Preprocessing](#data-preprocessing)
+- [Exploratory Data Analysis](#exploratory-data-analysis)
+- [Modeling](#modeling)
+- [Model Evaluation](#model-evaluation)
+- [Conclusion](#conclusion)
+
 ## Introduction
 
 The goal of this project is to develop a predictive model to forecast the number of taxi orders at airports for the next hour. By accurately predicting demand, the Sweet Lift Taxi company aims to attract more drivers during peak hours, thereby improving service efficiency and customer satisfaction. This project involves:
@@ -11,15 +22,12 @@ The goal of this project is to develop a predictive model to forecast the number
 
 **Benchmark:** The final model's RMSE on the test set should not exceed 48.
 
-[Notebook](/forecasting_hourly_taxi_orders.ipynb)
-
 ## Dataset Description
 
 The dataset used in this project is provided by Sweet Lift Taxi company and contains historical data on taxi orders at airports. The data is stored in `data/taxi.csv` and includes the following key features:
 
 - `datetime`: Timestamp of the order.
 - `num_orders`: Number of taxi orders at the given timestamp.
-
 
 ## Data Preprocessing
 
@@ -42,9 +50,9 @@ In this section, we analyze the historical taxi order data to uncover patterns a
     <img src="images/hourly_seasonal_summer.png" alt="Hourly Seasonal Summer" style="width: 49.5%; height: auto;"/>
     </div>  
     <br>
-    
+
     This pattern can be more clearly explored by plotting the average taxi orders per hour on a bar graph.  
-    
+
     ![Average Orders Per Hour Bar Graph](/images/average_orders_per_hour_bar.png)  
 
 3. Weekly seasonality, with two peaks per week on Mondays and Fridays is revealed when resampling the data to daily totals.  
@@ -129,6 +137,21 @@ To effectively utilize this model, the following steps are recommended:
 
 1. Apply the `make_features(data, datalags=16, rolling_mean=4)` function to preprocess the time series data.
 
-2. Define the model with the specified parameters: 
+2. Define the model with the specified parameters:
+
    ```python
    model = LGBMRegressor(learning_rate=0.3, max_depth=10, n_estimators=15)
+    ```
+
+## Libraries Used
+
+Python 3.10.9  
+pandas=2.0.3  
+numpy=1.25.2  
+matplotlib=3.7.1  
+seaborn=0.13.1  
+tqdm=4.66.2  
+statsmodels=0.14.0  
+sklearn=1.2.2  
+lightgbm=3.3.1  
+pmdarima=2.0.4
